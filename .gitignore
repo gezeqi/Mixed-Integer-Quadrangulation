@@ -1,0 +1,107 @@
+# ---------------------------------------------------------------------------
+# Build outputs
+# ---------------------------------------------------------------------------
+build/
+build-*/
+out/
+cmake-build-*/
+_deps/
+
+# ---------------------------------------------------------------------------
+# CMake
+# ---------------------------------------------------------------------------
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+cmake_install.cmake
+install_manifest.txt
+Testing/
+Makefile
+*.cmake
+!cmake/*.cmake
+
+# ---------------------------------------------------------------------------
+# Visual Studio / MSVC
+# ---------------------------------------------------------------------------
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
+*.sdf
+*.opensdf
+*.suo
+*.VC.db
+*.VC.opendb
+*.ipch
+ipch/
+x64/
+x86/
+Debug/
+Release/
+RelWithDebInfo/
+MinSizeRel/
+
+# ---------------------------------------------------------------------------
+# Compiler output
+# ---------------------------------------------------------------------------
+*.obj
+*.o
+*.a
+*.lib
+*.so
+*.so.*
+*.dylib
+*.dll
+*.exe
+*.pdb
+*.ilk
+*.exp
+*.idb
+*.manifest
+*.res
+*.tlog
+
+# ---------------------------------------------------------------------------
+# Output artifacts of the pipeline
+# ---------------------------------------------------------------------------
+# Generated quad meshes — usually don't want these in source control
+quad_out.obj
+*_quad.obj
+*.ply
+*.stl
+
+# Data files (typically large; fetch via data/README.md)
+data/*.off
+data/*.obj
+data/*.stl
+data/*.ply
+!data/README.md
+!data/.gitkeep
+
+# ---------------------------------------------------------------------------
+# Editor / IDE
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# CLion / Rider / Others
+# ---------------------------------------------------------------------------
+*.iml
+.cache/
+.clangd/
+compile_commands.json
+
+# ---------------------------------------------------------------------------
+# Python bindings / tooling artifacts (in case you add any later)
+# ---------------------------------------------------------------------------
+__pycache__/
+*.pyc
+.venv/
+venv/

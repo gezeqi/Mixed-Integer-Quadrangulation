@@ -1,0 +1,79 @@
+MIQ Reproduction — Mixed-Integer Quadrangulation Pipeline
+Copyright (C) 2026 qiyuema
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
+
+You should have received a copy of the GNU General Public License along with
+this program.  If not, see <https://www.gnu.org/licenses/>.
+
+The full text of the GPL-3.0 license is available at:
+    https://www.gnu.org/licenses/gpl-3.0.txt
+
+To vendor a local copy (recommended before distribution), run from this
+directory:
+
+    # PowerShell
+    Invoke-WebRequest https://www.gnu.org/licenses/gpl-3.0.txt -OutFile COPYING
+
+    # or bash / git-bash
+    curl -L https://www.gnu.org/licenses/gpl-3.0.txt -o COPYING
+
+
+=============================================================================
+Why GPL-3.0: transitive license obligations
+=============================================================================
+
+This project is a thin orchestration layer on top of four upstream libraries.
+The resulting binary is a combined work; its license is the most restrictive
+of its components:
+
+    Component      License     Notes
+    ------------   --------    -----------------------------------------------
+    libigl v2.5.0  MPL-2.0     core / NRosy / MIQ wrapper. File-level copyleft.
+    CoMISo         GPL-3.0     Mixed-integer QP solver. Transitive => GPL.
+    libQEx         GPL-3.0     Quad mesh extractor (Ebke et al. 2013).
+    OpenMesh       BSD-3       libQEx's only hard dependency.
+    OpenBLAS       BSD-3       Runtime linear algebra (via vcpkg).
+    Eigen          MPL-2.0     Header-only, transitive through libigl.
+    GLFW / ImGui   zlib / MIT  Viewer only, permissive.
+
+Because CoMISo and libQEx are GPL-3.0-or-later, any distributed binary that
+links against them (statically or dynamically) must be released under GPL-3.0
+as well. This project therefore adopts GPL-3.0 as its overall license.
+
+If you want a more permissive license for downstream use, you must replace
+both CoMISo and libQEx with non-GPL alternatives (e.g., port the mixed-integer
+solver to Eigen's SparseQR + custom rounding, and implement your own quad
+extractor). That's a substantial rewrite beyond the scope of this repository.
+
+
+=============================================================================
+Per-source file header (suggested for new .cpp/.h you add)
+=============================================================================
+
+/*
+ * Copyright (C) 2026 qiyuema
+ *
+ * This file is part of MIQ Reproduction.
+ *
+ * MIQ Reproduction is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for
+ * more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
