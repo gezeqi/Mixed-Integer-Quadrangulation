@@ -41,6 +41,16 @@ target_compile_definitions(03_quad_extract PRIVATE
     NOMINMAX _USE_MATH_DEFINES    # qex.h pulls OpenMesh headers
     DLLEXPORT=)                   # static link: neutralize qex.h's dllimport/dllexport
 
+add_executable(04_quad_extract_load_frames src/04_quad_extract_load_frames.cpp)
+target_link_libraries(04_quad_extract_load_frames PRIVATE
+        igl::core igl::glfw igl::imgui igl_copyleft::comiso
+        QExStatic)    # libQEx static lib — avoids MSVC dll-export issues
+target_include_directories(04_quad_extract_load_frames PRIVATE
+        ${libqex_SOURCE_DIR}/interfaces/c)
+target_compile_definitions(04_quad_extract_load_frames PRIVATE
+        NOMINMAX _USE_MATH_DEFINES    # qex.h pulls OpenMesh headers
+        DLLEXPORT=)                   # static link: neutralize qex.h's dllimport/dllexport
+
 # Copy data folder next to binaries so relative paths just work
 add_custom_target(copy_data ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -64,7 +74,7 @@ if(WIN32)
         set(_vcpkg_bin "${_vcpkg_root}/installed/${VCPKG_TARGET_TRIPLET}/bin")
     endif()
 
-    foreach(_tgt 01_cross_field 02_miq 03_quad_extract)
+    foreach(_tgt 01_cross_field 02_miq 03_quad_extract 04_quad_extract_load_frames)
         # 1. CoMISo's bundled ext DLLs first (baseline)
         if(EXISTS "${_comiso_openblas_bin}")
             file(GLOB _comiso_dlls "${_comiso_openblas_bin}/*.dll")
