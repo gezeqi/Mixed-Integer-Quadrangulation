@@ -28,7 +28,7 @@ endif()
 FetchContent_Declare(
     libqex
     GIT_REPOSITORY https://github.com/hcebke/libQEx.git
-    GIT_TAG        c0a4dc6         # master as of 2020-08-22
+    GIT_TAG        master
     GIT_SHALLOW    TRUE
 )
 # Don't let libQEx pull in its demo/cmdline_tool (uses POSIX getopt — fails MSVC)

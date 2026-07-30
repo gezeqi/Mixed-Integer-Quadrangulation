@@ -7,7 +7,7 @@ cmake_minimum_required(VERSION 3.16)
 # required at least 3.5, which is enough to silence the hard error.
 set(CMAKE_POLICY_VERSION_MINIMUM 3.5 CACHE STRING "" FORCE)
 
-project(miq_repro LANGUAGES CXX)
+project(miq_repro LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
